@@ -17,3 +17,9 @@ Route::get('/', function () {
 
 Route::get('/login', 'Auth\AuthController@login');
 Route::post('/login', 'Auth\AuthController@postLogin');
+Route::get('/logout', 'Auth\AuthController@logout');
+
+Route::get('/auth/token/{token}', 'Auth\AuthController@authenticate');
+Route::get('/dashboard', function () {
+    return 'Welcome, ' . Auth::user()->name;
+})->middleware('auth');
