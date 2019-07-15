@@ -23,3 +23,6 @@ Route::get('/auth/token/{token}', 'Auth\AuthController@authenticate');
 Route::get('/dashboard', function () {
     return 'Welcome, ' . Auth::user()->name;
 })->middleware('auth');
+
+Route::get('/login/github', 'Auth\GithubLoginController@redirectToProvider');
+Route::get('/login/github/callback', 'Auth\GithubLoginController@handleProviderCallback');
